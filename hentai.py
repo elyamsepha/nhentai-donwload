@@ -38,6 +38,9 @@ if response.status_code == 200:
     escolha = input("escolha: ")
     print("\n\n")
     if escolha == "1" or escolha == 1:
+        caminho_atual = os.getcwd()
+        os.makedirs(caminho_atual+f'//{titulo+titulo2}')
+        os.chdir(caminho_atual+f'//{titulo+titulo2}')
         num = 1
         for item in lista:
             response = requests.get(item, headers=header)
