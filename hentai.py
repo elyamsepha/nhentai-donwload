@@ -8,7 +8,7 @@ header = {
 
 codigo = input("código do hentai: ")
 
-URL = f"https://nhentai.to/g/{codigo}"
+URL = f"https://nhentai.net/g/{codigo}"
 
 
 response = requests.get(URL, headers=header)
