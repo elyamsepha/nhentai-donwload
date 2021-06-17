@@ -32,7 +32,7 @@ if response.status_code == 200:
     imagens = site.find_all('a', attrs={'class': "gallerythumb"})
 
     for imagem in imagens:
-        lista.append("https://nhentai.to"+imagem.get('href'))
+        lista.append("https://nhentai.net"+imagem.get('href'))
     os.system("cls")
     print(f"-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\nTítulo: {titulo}{titulo2}\n\nquantidade de capítulos: {len(lista)}\n\n[1] - baixar hentai\n[2] - sair\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n")
     escolha = input("escolha: ")
@@ -45,8 +45,11 @@ if response.status_code == 200:
             content = response.content
             site = BeautifulSoup(content, 'html.parser')
 
-            imagem = site.find('img', attrs={'class': "fit-horizontal"})
-            photo = (imagem.get('src'))
+            imagem = site.find('section', attrs={'id': "image-container"})
+            for img in imagem:
+                for i in img:
+                    photo = (i.get("src"))
+                    break
 
             response = requests.get(photo, headers=header)
 
