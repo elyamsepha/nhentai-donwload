@@ -20,22 +20,21 @@ if response.status_code == 200:
 
     lista = []
 
-    titulo = site.find('div', attrs={'id': "info"})
-    n = 0
-    for titu in titulo:
-        if n == 1:
-            for t in titu:
-                titulo = t
-            break
-        else:
-            n = n + 1
+    titulo = site.find('span', attrs={'class': "pretty"})
+    titulo2 = site.find('span', attrs={'class': "after"})
+    for t in titulo:
+        titulo = t
+        break
+    for t in titulo2:
+        titulo2 = t
+        break
 
     imagens = site.find_all('a', attrs={'class': "gallerythumb"})
 
     for imagem in imagens:
         lista.append("https://nhentai.to"+imagem.get('href'))
     os.system("cls")
-    print(f"-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\nTítulo: {titulo}\n\nquantidade de capítulos: {len(lista)}\n\n[1] - baixar hentai\n[2] - sair\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n")
+    print(f"-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\nTítulo: {titulo}{titulo2}\n\nquantidade de capítulos: {len(lista)}\n\n[1] - baixar hentai\n[2] - sair\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n")
     escolha = input("escolha: ")
     print("\n\n")
     if escolha == "1" or escolha == 1:
